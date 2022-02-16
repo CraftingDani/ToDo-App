@@ -1,17 +1,19 @@
 const listElem = document.querySelector(".entryList")
 const inputElem = document.querySelector('.newTodo')
+const data = localStorage.getItem("CraftingDani.ToDos.ToDoItems")
 
 updateList()
 
 function updateList()
 {
-    console.log(localStorage.getItem("CraftingDani.ToDos.ToDoItems"))
+    
 }
 
 function addEntry()
 {
     const newEntry = document.createElement("article")
-    newEntry.innerText = inputElem.value
+    //newEntry.innerText = inputElem.value
+    newEntry.innerText = data
     inputElem.value = ""
     listElem.appendChild(newEntry)
 }
