@@ -19,13 +19,15 @@
 
     <main>
         <section class="addEntry">
-            <input type="text" class="newTodo">
+            <input type="text" class="newEntry-name">
+            <input type="date" class="newEntry-datetime">
             <button onclick="addEntry();">ADD</button>
         </section>
 
         <section class="entryList">
             <article>
                 <p>New Todo</p>
+                <p class="entryDeadline">02.20.2022</p>
                 <button class="removeEntry" onclick="removeEntry();">&times;</button>
             </article>
         </section>

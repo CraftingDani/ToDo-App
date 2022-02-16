@@ -24,9 +24,7 @@ header
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #222222;
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 0 5px 3px #111;
     gap: 10px;
     position: fixed;
     top: 0;
@@ -65,7 +63,6 @@ main
 
 .addEntry
 {
-    background-color: #222;
     padding: 16px;
     border-radius: 10px;
     display: flex;
@@ -81,9 +78,18 @@ input
     border: none;
     border-bottom: 2px solid var(--colorAccent);
     outline: none;
-    min-width: 300px;
-    height: 20px;
     font-size: inherit;
+    height: 20px;
+}
+
+.newEntry-name
+{
+    min-width: 300px;
+}
+
+.newEntry-datetime
+{
+    min-width: 100px;
 }
 
 .addEntry button
@@ -96,6 +102,12 @@ input
     font-weight: bold;
     cursor: pointer;
     font-size: inherit;
+}
+
+.addEntry, .entryList article, header
+{
+    background-color: #222;
+    box-shadow: 0 0 5px 2px #111;
 }
 
 .entryList
@@ -115,7 +127,8 @@ input
     border-radius: 10px;
     padding: 0 16px 0 16px;
     align-items: center;
-    width: max-content;
+    justify-content: space-between;
+    width: 300px;
 }
 
 .removeEntry
@@ -126,4 +139,9 @@ input
     color: var(--colorAccent);
     cursor: pointer;
     padding: 0;
+}
+
+.entryDeadline
+{
+    color: #AAA;
 }

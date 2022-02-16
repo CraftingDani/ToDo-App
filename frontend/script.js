@@ -1,24 +1,58 @@
 const listElem = document.querySelector(".entryList")
-const inputElem = document.querySelector('.newTodo')
-const data = localStorage.getItem("CraftingDani.ToDos.ToDoItems")
+listElem.innerHTML = localStorage.getItem("CraftingDani.ToDo-App.list")
+const nameInputElem = document.querySelector('.newEntry-name')
+const deadlineInputElem = document.querySelector('.newEntry-datetime')
+let removeEntryButtons
+update()
 
-updateList()
-
-function updateList()
+document.addEventListener("keydown", function(e)
 {
-    
-}
+    if(e.key == "Enter") addEntry()
+})
 
 function addEntry()
 {
-    const newEntry = document.createElement("article")
-    //newEntry.innerText = inputElem.value
-    newEntry.innerText = data
-    inputElem.value = ""
-    listElem.appendChild(newEntry)
+    if(nameInputElem.value == "" || null || undefined) return
+
+    const newEntryElem = document.createElement("article")
+    const newNameElem = document.createElement("p")
+    const newDeadlineElem = document.createElement("p")
+    const newRemoveButtonElem = document.createElement("button")
+
+    newNameElem.innerText = nameInputElem.value
+    newDeadlineElem.innerText = deadlineInputElem.value
+    newRemoveButtonElem.innerHTML = "&times;"
+    nameInputElem.value = ""
+
+    newDeadlineElem.classList.add("entryDeadline")
+    newRemoveButtonElem.classList.add("removeEntry")
+
+    newEntryElem.appendChild(newNameElem)
+    newEntryElem.appendChild(newDeadlineElem)
+    newEntryElem.appendChild(newRemoveButtonElem)
+    listElem.appendChild(newEntryElem)
+
+    update()
 }
 
 function removeEntry(input)
 {
-    console.log(input)
+    input.parentElement.remove()
+    update()
+}
+
+function update()
+{
+    localStorage.setItem("CraftingDani.ToDo-App.list", listElem.innerHTML)
+
+    removeEntryButtons = document.querySelectorAll(".removeEntry")
+    
+    removeEntryButtons.forEach(function(i)
+    {
+        i.addEventListener("click", function(e)
+        {
+            console.log("click")
+            removeEntry(e.target)
+        })
+    })
 }
